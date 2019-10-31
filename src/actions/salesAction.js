@@ -18,8 +18,7 @@ export const getCustomerData = () => {
     return (dispatch) => {
         Axios.get(API.GetCustomerData, header)
         .then(result => {
-           //let data=result.data.Items;
-           let data=[{key: "221019", value: "Bas van Buuren B.V."}]
+           let data=result.data.Items;
            dispatch(fetchCustomer(data));
           });
         

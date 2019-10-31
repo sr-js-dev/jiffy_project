@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Select from 'react-select';
 import * as salesAction  from '../../actions/salesAction';
 import SessionManager from '../../components/session_manage';
+import Salesdetailform  from './salesdetail_form'
 import DatePicker from "react-datepicker";
 import Axios from 'axios';
 import API from '../../components/api'
@@ -27,7 +28,9 @@ class Table extends React.Component {
       quantity:'',
       amount:'',
       salesorderlinedata:[],
-      addnum:false
+      addnum:false,
+      modalShow:false
+      
     };
     handleAddRow = () => {
       const item = {
@@ -88,17 +91,19 @@ class Table extends React.Component {
     };
 
     getSalesPrice = (productid) => {
-        this.setState({productid:productid});
-        var params={
-            "productid":productid,
-            "orderdate":this.props.orderDate
-        }
-        var headers = SessionManager.shared().getAuthorizationHeader();
-        Axios.post(API.GetSalesItemsPrice, params, headers)
-        .then(result => {
+        this.setState({modalShow: true })
+        // this.setState({productid:productid});
+        // var params={
+        //     "productid":productid,
+        //     "orderdate":this.props.orderDate
+        // }
+        // var headers = SessionManager.shared().getAuthorizationHeader();
+        // Axios.post(API.GetSalesItemsPrice, params, headers)
+        // .then(result => {
             
-            this.setState({price:result.data.Items[0].price})
-        });
+        //     this.setState({price:result.data.Items[0].price})
+        //     this.setState({modalShow: true })
+        // });
     };
 
     componentDidMount () {
@@ -135,8 +140,8 @@ class Table extends React.Component {
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>Additions</th>
-                            <th>Packaging Material </th>
+                            <th>Loding Date</th>
+                            <th>Quantity</th>
                             <th>Price</th>
                             <th>Amount</th>
                         </tr>
@@ -207,6 +212,12 @@ class Table extends React.Component {
                 </table>
                 <button className="btn-small place-and-orders__add-row-btn add-row" onClick={this.handleAddRow}>Add row</button>
                 <button className="btn-small place-and-orders__add-row-btn add-row" onClick={this.saveSalesOrderLine} style={{float:"right"}}>Save</button>
+                <Salesdetailform
+                    show={this.state.modalShow}
+                    onHide={() => this.setState({modalShow: false})}
+                    // customerData
+                />
+                
         </div>
       );
     }
@@ -230,25 +241,22 @@ class Salesorderdtail extends Component {
         var params={
             "salesorderid":this.props.location.state.newId
         }
-        
         var headers = SessionManager.shared().getAuthorizationHeader();
-            Axios.post(API.GetSalesDetail, params, headers)
-            .then(result => {
-                console.log('22', result.data.Items[0])
-                this.setState({salesorder: result.data.Items[0]});
-            });
+        Axios.post(API.GetSalesDetail, params, headers)
+        .then(result => {
+            this.setState({salesorder: result.data.Items[0]});
+        });
     }
 
     getSalesItem () {
-        var params={
-            "customercode":this.props.location.state.customercode
-        }
-        console.log(params)
-        //var headers = SessionManager.shared().getAuthorizationHeader();
-           // Axios.post(API.GetSalesItems, params, headers)
-           // .then(result => {
-           //     this.setState({salesItems:result.data.Items})
-          //  });
+        // var params={
+        //     "customercode":this.props.location.state.customercode
+        // }
+        var headers = SessionManager.shared().getAuthorizationHeader();
+           Axios.get(API.GetSalesItems, headers)
+           .then(result => {
+               this.setState({salesItems:result.data.Items})
+           });
     }
     componentWillUnmount() {
         this._isMounted = false

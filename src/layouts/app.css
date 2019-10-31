@@ -156,3 +156,6 @@ dl, ol, ul {
   height: 35px;
   margin-bottom: 20px;
 }
+.rw-multiselect-taglist {
+  margin-bottom: 7px;
+}
