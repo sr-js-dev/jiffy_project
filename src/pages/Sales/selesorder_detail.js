@@ -8,6 +8,7 @@ import Salesdetailform  from './salesdetail_form'
 import DatePicker from "react-datepicker";
 import Axios from 'axios';
 import API from '../../components/api'
+import "react-datepicker/dist/react-datepicker.css";
 const mapStateToProps = state => ({ 
     ...state.common,
 });
