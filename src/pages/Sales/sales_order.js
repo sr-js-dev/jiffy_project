@@ -55,7 +55,7 @@ getSalesData() {
         var headers = SessionManager.shared().getAuthorizationHeader();
         Axios.get(API.GetSalesData, headers)
         .then(result => {
-            console.log('112233', result)
+            // console.log('112233', result)
             this.setState({salesData:result.data.Items})
         });
 }
