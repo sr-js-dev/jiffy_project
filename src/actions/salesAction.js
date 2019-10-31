@@ -5,17 +5,6 @@ import Axios from 'axios';
 import history from '../history';
 
 //get sales data
-export const getSalesData = () => {
-    var header = SessionManager.shared().getAuthorizationHeader();
-    return (dispatch) => {
-        Axios.get(API.GetSalesData, header)
-        .then(result => {
-           let data=result.data.Items;
-           dispatch(fetchSalesData(data));
-          });
-        
-    };
-}
 
 export const fetchSalesData = (salesData) => {
     return {
@@ -29,7 +18,8 @@ export const getCustomerData = () => {
     return (dispatch) => {
         Axios.get(API.GetCustomerData, header)
         .then(result => {
-           let data=result.data.Items;
+           //let data=result.data.Items;
+           let data=[{key: "221019", value: "Bas van Buuren B.V."}]
            dispatch(fetchCustomer(data));
           });
         

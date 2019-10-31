@@ -106,14 +106,14 @@ class Table extends React.Component {
     }
 
     getSalesOrderLines () {
-        var params = {
-            salesorderid:this.props.salesorderid
-        }
-        var headers = SessionManager.shared().getAuthorizationHeader();
-        Axios.post(API.GetSalesOrderLines, params, headers)
-        .then(result => {
-            this.setState({rows:result.data.Items})
-        });
+        // var params = {
+        //     salesorderid:this.props.salesorderid
+        // }
+        //var headers = SessionManager.shared().getAuthorizationHeader();
+        //Axios.post(API.GetSalesOrderLines, params, headers)
+        //.then(result => {
+         //   this.setState({rows:result.data.Items})
+        //});
     }
 
     render() {
@@ -230,9 +230,11 @@ class Salesorderdtail extends Component {
         var params={
             "salesorderid":this.props.location.state.newId
         }
+        
         var headers = SessionManager.shared().getAuthorizationHeader();
             Axios.post(API.GetSalesDetail, params, headers)
             .then(result => {
+                console.log('22', result.data.Items[0])
                 this.setState({salesorder: result.data.Items[0]});
             });
     }
@@ -241,11 +243,12 @@ class Salesorderdtail extends Component {
         var params={
             "customercode":this.props.location.state.customercode
         }
-        var headers = SessionManager.shared().getAuthorizationHeader();
-            Axios.post(API.GetSalesItems, params, headers)
-            .then(result => {
-                this.setState({salesItems:result.data.Items})
-            });
+        console.log(params)
+        //var headers = SessionManager.shared().getAuthorizationHeader();
+           // Axios.post(API.GetSalesItems, params, headers)
+           // .then(result => {
+           //     this.setState({salesItems:result.data.Items})
+          //  });
     }
     componentWillUnmount() {
         this._isMounted = false

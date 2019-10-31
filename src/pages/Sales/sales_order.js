@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import * as salesAction  from '../../actions/salesAction';
+import $ from 'jquery';
 import { Button, Form } from 'react-bootstrap';
 import  Salesform  from './salesform'
+import SessionManager from '../../components/session_manage';
+import API from '../../components/api'
+import Axios from 'axios';
 const mapStateToProps = state => ({
      ...state.commen,
-     salesData: state.common.salesData,
-     customerData: state.common.customerData,
+
 });
 
 const mapDispatchToProps = dispatch => ({
-    getSalesData: () =>
-        dispatch(salesAction.getSalesData()),
+
 }); 
 
 class Salesorder extends Component {
@@ -22,16 +23,46 @@ class Salesorder extends Component {
     constructor(props) {
         super(props);
         this.state = {  
-
+            salesData:[]
         };
       }
 componentDidMount() {
-    this.props.getSalesData();
+    this.getSalesData()
+}
+
+getSalesData() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://brandnewkey.sohosted-vps.nl:1012/token",
+        "method": "POST",
+        "headers": {
+          "content-type": "application/x-www-form-urlencoded",
+          "cache-control": "no-cache",
+          "postman-token": "472baa39-523a-8240-dcbd-53b3c3d7730a"
+        },
+        "data": {
+          "grant_type": "password",
+          "userName": "johan@example.com",
+          "password": "Pass@word1"
+        }
+      }
+      
+        $.ajax(settings).done(function (response) {
+            console.log('1111111111111', response)
+            window.localStorage.setItem('token', response.access_token);
+        });
+        var headers = SessionManager.shared().getAuthorizationHeader();
+        Axios.get(API.GetSalesData, headers)
+        .then(result => {
+            console.log('112233', result)
+            this.setState({salesData:result.data.Items})
+        });
 }
 componentWillUnmount() {
 }
 render () {
-    let salesData = this.props.salesData;
+    let salesData = this.state.salesData;
     salesData.sort(function(a, b) {
         return a.id - b.id;
     });
