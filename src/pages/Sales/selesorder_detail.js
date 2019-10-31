@@ -135,8 +135,8 @@ class Table extends React.Component {
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>Loding Date</th>
-                            <th>Quantity</th>
+                            <th>Additions</th>
+                            <th>Packaging Material </th>
                             <th>Price</th>
                             <th>Amount</th>
                         </tr>
