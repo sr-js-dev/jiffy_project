@@ -34,8 +34,6 @@ class Salesform extends Component {
     }
     componentDidMount() {
         this.props.getCustomer();
-        
-        
     }
     handleSubmit = (event) => {
         event.preventDefault();
