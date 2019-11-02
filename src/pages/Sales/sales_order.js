@@ -86,7 +86,7 @@ render () {
                         <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Customer</th>
+                            <th>Customer1</th>
                             <th>Reference</th>
                             <th>Order Date</th>
                             <th> Total amount</th>
