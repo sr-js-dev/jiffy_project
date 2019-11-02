@@ -34,7 +34,7 @@ getSalesData() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://brandnewkey.sohosted-vps.nl:1012/token",
+        "url": " https://brandnewkey.sohosted-vps.nl:44401/token",
         "method": "POST",
         "headers": {
           "content-type": "application/x-www-form-urlencoded",
@@ -49,7 +49,6 @@ getSalesData() {
       }
       
         $.ajax(settings).done(function (response) {
-            console.log('1111111111111', response)
             window.localStorage.setItem('token', response.access_token);
         });
         var headers = SessionManager.shared().getAuthorizationHeader();

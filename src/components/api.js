@@ -1,4 +1,4 @@
-const BASEURL = 'http://brandnewkey.sohosted-vps.nl:1012/api/factory';
+const BASEURL = 'https://brandnewkey.sohosted-vps.nl:44401/api/factory';
 export default {
   GetSalesData: `${BASEURL}/execute/Jiffy/getSalesOrders`,
   GetCustomerData: `${BASEURL}/execute/Jiffy/getCustomersDropdown`,

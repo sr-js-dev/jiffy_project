@@ -16,8 +16,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getCustomer: () =>
-        dispatch(salesAction.getCustomerData()),
     saveSalesOder: (params) =>
         dispatch(salesAction.saveSalesOrder(params))
 });
@@ -37,7 +35,6 @@ class Salesdetailform extends Component {
         this._isMounted = false;
     }
     componentDidMount() {
-        this.props.getCustomer();
         this.getAddition();
         this.getMaterial();
     }
@@ -78,10 +75,6 @@ class Salesdetailform extends Component {
         this.setState({stepflag: k})
     }
     render(){
-        let customer = [];
-        if(this.props.customerData){
-            customer = this.props.customerData.map( s => ({value:s.key,label:s.value}) );
-        }
         let additionitem = [];
         let temp = [];
         if(this.state.additionitems){
@@ -137,7 +130,7 @@ class Salesdetailform extends Component {
                             <Col sm="9" className="product-text">
                                 <Select
                                     name="product"
-                                    options={customer}
+                                    options={this.props.productitems}
                                     onChange={val => this.setState({val1:val})}
                                 />
                                 {!this.props.disabled && (

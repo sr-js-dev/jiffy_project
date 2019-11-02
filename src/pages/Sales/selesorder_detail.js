@@ -216,7 +216,7 @@ class Table extends React.Component {
                 <Salesdetailform
                     show={this.state.modalShow}
                     onHide={() => this.setState({modalShow: false})}
-                    // customerData
+                    productitems={salesItem}
                 />
                 
         </div>
