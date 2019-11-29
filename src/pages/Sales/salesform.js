@@ -54,7 +54,6 @@ class Salesform extends Component {
         if(this.props.customerData){
             customer = this.props.customerData.map( s => ({value:s.key,label:s.value}));
         }
-        console.log('222222', customer);
         return (
             <Modal
             show={this.props.show}
