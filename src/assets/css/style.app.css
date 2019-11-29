@@ -15,15 +15,11 @@ html, body {
     max-width: 82%;
 }
 }
-@media (max-width: 1000px){
-.sidebar{
-  left: -210px;
-}
-}
+
 
 .row{
-flex-wrap: inherit;
-margin-right: 21px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 .col-sm-10{
 padding-right: 0px;
@@ -34,14 +30,6 @@ font-size:15px;
 }
 .order_div{
 padding:20px;
-}
-.sidebar.open {
-left: 10px;
-}
-@media (max-width: 1000px){
-.header__controls{
-  display: none;
-}
 }
 @media (max-width: 1000px){
 .orders__filters-item {
@@ -69,11 +57,12 @@ margin-bottom: 0rem;
 }
 .product-form{
 padding-bottom: 0px;
-width: 80%;
 }
 .product-text{
 height: 50px;
-margin-left:50px;
+}
+.input-detail{
+  width: 100%;
 }
 .dataTable{
 border-style: solid;
@@ -175,4 +164,19 @@ margin-bottom: 7px;
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.css-1szy77t-control:hover {
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+}
+.css-1szy77t-control{
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+  border-color: #80bdff !important;
+}
+.order_div {
+  padding: 20px;
 }

@@ -286,14 +286,14 @@ class Salesorderdtail extends Component {
     render () {
         let detailData = this.state.salesorder;
         return (
-            <div>
+            <div className="order_div">
                 <div className="content__header content__header--with-line">
                     <h2 className="title">Sales Order Details</h2>
                 </div>
                 <div className="place-and-orders">
                     <div className="place-and-orders__top">
-                        <Container className="sales-details">
-                            <Row>
+                        {/* <Container className="sales-details">
+                            <Row style={{paddingBottom: 20}}>
                                 <Col>
                                     <div className="place-and-orders__form-row">
                                         <span>Customer</span>
@@ -313,6 +313,44 @@ class Salesorderdtail extends Component {
                                             <input type="text" readOnly defaultValue={this.formatDate(detailData.OrderDate)} className="input"/>
                                         )}
                                     </div>
+                                </Col>
+                            </Row>
+                        </Container> */}
+                        <Container className="sales-details">
+                            <Row>
+                                <Col>
+                                    <Form className="container product-form">
+                                        <Form.Group as={Row} controlId="formPlaintextSupplier">
+                                            <Form.Label column sm="3">
+                                                Customer
+                                            </Form.Label>
+                                            <Col sm="9" className="product-text">
+                                                {detailData &&(
+                                                    <input type="text" readOnly defaultValue={detailData.Customer} className="input input-detail"/>
+                                                )}
+                                            </Col>
+                                        </Form.Group>
+                                        <Form.Group as={Row} controlId="formPlaintextSupplier">
+                                            <Form.Label column sm="3">
+                                                Reference
+                                            </Form.Label>
+                                            <Col sm="9" className="product-text">
+                                                {detailData &&(
+                                                    <input type="text" readOnly defaultValue={detailData.Reference} className="input input-detail"/>
+                                                )}
+                                            </Col>
+                                        </Form.Group>
+                                        <Form.Group as={Row} controlId="formPlaintextSupplier">
+                                            <Form.Label column sm="3">
+                                                Order_Date
+                                            </Form.Label>
+                                            <Col sm="9" className="product-text">
+                                                {detailData.OrderDate &&(
+                                                    <input type="text" readOnly defaultValue={detailData.OrderDate} className="input input-detail"/>
+                                                )}
+                                            </Col>
+                                        </Form.Group>
+                                    </Form>
                                 </Col>
                             </Row>
                         </Container>

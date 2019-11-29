@@ -45,7 +45,6 @@ class Salesform extends Component {
         var headers = SessionManager.shared().getAuthorizationHeader();
         Axios.post(API.PostSalesOrder, data, headers)
         .then(result => {
-            console.log('3333', result)
             this.props.onHide();
             history.push('/sales-order-detail',{ newId: result.data.NewId, customercode:this.state.val1.value});
         });
@@ -53,8 +52,9 @@ class Salesform extends Component {
     render(){
         let customer = [];
         if(this.props.customerData){
-            customer = this.props.customerData.map( s => ({value:s.key,label:s.value}) );
+            customer = this.props.customerData.map( s => ({value:s.key,label:s.value}));
         }
+        console.log('222222', customer);
         return (
             <Modal
             show={this.props.show}

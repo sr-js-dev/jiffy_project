@@ -12,10 +12,10 @@ class Layout extends Component {
   
     render () {
       return (
-          <Row>
-            <Col sm={2}><Sidebar/></Col>
-            <Col sm={10}>
-            <Header/>
+          <Row style={{height:"100%"}}>
+            <Sidebar/>
+            <Col style={{paddingLeft:0, paddingRight:0}}>
+             <Header/>
                 <Router history={history}>
                   <Switch>
                   <Route path="/sales-order" component={Salesorder} />
