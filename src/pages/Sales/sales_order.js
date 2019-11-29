@@ -60,8 +60,9 @@ getSalesData() {
 componentWillUnmount() {
 }
 render () {
+    let salesData
     if(this.state.salesData){
-        let salesData = this.state.salesData;
+        salesData = this.state.salesData;
         salesData.sort(function(a, b) {
             return a.id - b.id;
         });
