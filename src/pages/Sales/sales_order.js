@@ -54,7 +54,6 @@ getSalesData() {
         var headers = SessionManager.shared().getAuthorizationHeader();
         Axios.get(API.GetSalesData, headers)
         .then(result => {
-            // console.log('112233', result)
             this.setState({salesData:result.data.Items})
         });
 }
@@ -98,8 +97,8 @@ render () {
                                     <tr id={i} key={i}>
                                         <td>{data.id}</td>
                                         <td>{data.Customer}</td>
-                                        <td>{data.reference}</td>
-                                        <td>{data.orderdate}</td>
+                                        <td>{data.Reference}</td>
+                                        <td>{data.OrderDate}</td>
                                         <td>{data.total}</td>
                                     </tr>
                                 ))

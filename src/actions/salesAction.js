@@ -61,6 +61,7 @@ export const getSalesOrder = (salesorderid) => {
     return (dispatch) => {
         Axios.post(API.GetSalesDetail, params, headers)
         .then(result => {
+            
             dispatch(fetchGetSaleDetail(result.data.Items));
         });
     };

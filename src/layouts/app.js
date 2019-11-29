@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Route, Switch,Router } from 'react-router-dom';
 import GuestLayout from './layout_guest'
 import history from '../history';
-import './app.css'
 
 class App extends Component {
   render () {

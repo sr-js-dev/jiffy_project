@@ -304,13 +304,13 @@ class Salesorderdtail extends Component {
                                     <div className="place-and-orders__form-row">
                                         <span>Reference</span>
                                         {detailData &&(
-                                            <input type="text" readOnly defaultValue={ detailData.reference} className="input"/>
+                                            <input type="text" readOnly defaultValue={ detailData.Reference} className="input"/>
                                         )}
                                     </div>
                                     <div className="place-and-orders__form-row">
                                         <span>OrderDate</span>
-                                        {detailData.orderdate &&(
-                                            <input type="text" readOnly defaultValue={this.formatDate(detailData.orderdate)} className="input"/>
+                                        {detailData.OrderDate &&(
+                                            <input type="text" readOnly defaultValue={this.formatDate(detailData.OrderDate)} className="input"/>
                                         )}
                                     </div>
                                 </Col>

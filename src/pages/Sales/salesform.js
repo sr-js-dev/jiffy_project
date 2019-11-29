@@ -45,6 +45,7 @@ class Salesform extends Component {
         var headers = SessionManager.shared().getAuthorizationHeader();
         Axios.post(API.PostSalesOrder, data, headers)
         .then(result => {
+            console.log('3333', result)
             this.props.onHide();
             history.push('/sales-order-detail',{ newId: result.data.NewId, customercode:this.state.val1.value});
         });

@@ -85,7 +85,7 @@ class Salesdetailform extends Component {
               })
         }
         let materialitem = [];
-        if(this.state.additionitems){
+        if(this.state.materialitems){
             temp = this.state.materialitems;
             temp.map((data, index) => {
                 materialitem.push(data.value)
