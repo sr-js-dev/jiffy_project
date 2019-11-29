@@ -60,10 +60,12 @@ getSalesData() {
 componentWillUnmount() {
 }
 render () {
-    let salesData = this.state.salesData;
-    salesData.sort(function(a, b) {
-        return a.id - b.id;
-    });
+    if(this.state.salesData){
+        let salesData = this.state.salesData;
+        salesData.sort(function(a, b) {
+            return a.id - b.id;
+        });
+    }
     return (
         <div className="order_div">
             <div className="content__header content__header--with-line">
@@ -81,15 +83,15 @@ render () {
                     </Form>
                 </div>
                 <div className="table-responsive purchase-order-table">
-                <table className="place-and-orders__table table table--striped prurprice-dataTable"  >
+                    <table className="place-and-orders__table table table--striped prurprice-dataTable"  >
                         <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Customer</th>
-                            <th>Reference</th>
-                            <th>Order Date</th>
-                            <th> Total amount</th>
-                        </tr>
+                            <tr>
+                                <th>Id</th>
+                                <th>Customer</th>
+                                <th>Reference</th>
+                                <th>Order Date</th>
+                                <th> Total amount</th>
+                            </tr>
                         </thead>
                             {salesData &&(<tbody >
                                 {
