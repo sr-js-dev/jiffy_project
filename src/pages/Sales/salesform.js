@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Modal, Form, Button, Row, Col } from 'react-bootstrap';
 import Select from 'react-select';
 import { connect } from 'react-redux';
-import * as salesAction  from '../../actions/salesAction';
 import DatePicker from "react-datepicker";
 import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
@@ -10,15 +9,11 @@ import Axios from 'axios';
 import history from '../../history';
 const mapStateToProps = state => ({ 
     ...state.auth,
-    customerData: state.common.customerData,
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getCustomer: () =>
-        dispatch(salesAction.getCustomerData()),
-    saveSalesOder: (params) =>
-        dispatch(salesAction.saveSalesOrder(params))
+
 });
 class Salesform extends Component {
     _isMounted = false;
@@ -33,7 +28,7 @@ class Salesform extends Component {
         this._isMounted = false;
     }
     componentDidMount() {
-        this.props.getCustomer();
+        // this.props.getCustomer();
     }
     handleSubmit = (event) => {
         event.preventDefault();

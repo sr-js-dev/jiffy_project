@@ -6,7 +6,6 @@ import 'mdbreact/dist/css/mdb.css';
 import $ from 'jquery';
 import { Button, Form } from 'react-bootstrap';
 import  Salesform  from './salesform'
-import SessionManager from '../../components/session_manage';
 import API from '../../components/api'
 import Axios from 'axios';
 const mapStateToProps = state => ({
@@ -49,13 +48,25 @@ getSalesData() {
       }
       
         $.ajax(settings).done(function (response) {
+            
+        })
+        .then(response => {
             window.localStorage.setItem('token', response.access_token);
-        });
-        var headers = SessionManager.shared().getAuthorizationHeader();
-        Axios.get(API.GetSalesData, headers)
-        .then(result => {
-            this.setState({salesData:result.data.Items})
-        });
+            let header=  { headers:{'Authorization': 'Bearer ' + response.access_token,
+            'Content-Type': 'application/json',}
+                
+              }
+            Axios.get(API.GetSalesData, header)
+            .then(result => {
+                console.log('3333', result)
+                this.setState({salesData:result.data.Items})
+            });
+            Axios.get(API.GetCustomerData, header)
+            .then(result => {
+                this.setState({customerData: result.data.Items})
+            });
+        })
+       
 }
 componentWillUnmount() {
 }
@@ -79,7 +90,7 @@ render () {
                         <Salesform
                             show={this.state.modalShow}
                             onHide={() => this.setState({modalShow: false})}
-                            // customerData
+                            customerData={this.state.customerData}
                         />
                     </Form>
                 </div>
